@@ -32,8 +32,7 @@ public class StudentServiceTest {
     {
         getStudentData();
         when(studentDAO.getStudentById(any())).thenReturn(getStudentData().get(0));
-        studentService.
-        Assertions.assertEquals("shobin" ,);
+        Assertions.assertEquals("shobin" ,studentService.getStudent(0));
     }
 
     private List<Student> getStudentData()
