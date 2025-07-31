@@ -6,33 +6,35 @@ import com.example.Test.pojo.Student;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
-
+@ExtendWith(MockitoExtension.class)
 public class StudentServiceTest {
 
     @Mock
     StudentDAO studentDAO;
 
+    @InjectMocks
     StudentService studentService;
 
     @BeforeEach
     void initialSetup()
     {
-        studentService=new StudentService();
     }
 
     @Test
     void getStudentByIdTest()
     {
-        getStudentData();
-        when(studentDAO.getStudentById(any())).thenReturn(getStudentData().get(0));
-        Assertions.assertEquals("shobin" ,studentService.getStudent(0));
+        when(studentDAO.getStudentById(anyInt())).thenReturn(getStudentData().get(0));
+        Assertions.assertEquals("shobin" ,studentService.getStudent(0).getName());
     }
 
     private List<Student> getStudentData()
