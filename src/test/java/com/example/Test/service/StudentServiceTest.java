@@ -42,5 +42,6 @@ public class StudentServiceTest {
         student.setStu_id(1);
         student.setName("shobin");
         studentList.add(student);
+        return studentList;
     }
 }
